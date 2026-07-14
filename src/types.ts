@@ -40,4 +40,5 @@ export interface AnalysisResult {
   hooks: string[];
   scripts: ScriptSet[];
   tips: string[];
+  isDemoFallback?: boolean;
 }

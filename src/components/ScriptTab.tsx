@@ -725,6 +725,29 @@ export default function ScriptTab({ preFilledName, preFilledDescription, onClear
         {/* Scenario 3: Completed Script Dashboard Results */}
         {!isGenerating && result && (
           <div className="space-y-6 animate-fade-in">
+            {result.isDemoFallback && (
+              <div className="bg-amber-50 border border-amber-200/80 rounded-3xl p-5 shadow-xs space-y-3 animate-fade-in">
+                <div className="flex items-start gap-3">
+                  <span className="p-2 bg-amber-500 text-white rounded-xl shrink-0 shadow-sm shadow-amber-200">
+                    <Info className="w-5 h-5" />
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-black text-amber-950 text-sm">데모 모드(지능형 시뮬레이션) 작동 안내</h4>
+                    <p className="text-[10px] text-amber-700 font-bold mt-0.5">
+                      구글 Gemini 무료 API 호출 한도 초과로 자동 전환되었습니다.
+                    </p>
+                  </div>
+                </div>
+                <div className="text-xs text-amber-900 leading-relaxed font-medium">
+                  <p>
+                    현재 무료 계정의 일일 호출 한도가 초과되어, 대본 분석이 원활히 이어질 수 있도록 <strong>지능형 로컬 대본 시뮬레이터</strong>가 실시간 고품질 대본을 준비했습니다.
+                  </p>
+                  <p className="mt-2 bg-white/80 p-3 rounded-xl border border-amber-100 text-[11px] text-slate-700">
+                    💡 <strong>완전 해결 방법:</strong> 우측 상단의 <strong>Settings &gt; Secrets</strong> 메뉴에서 나만의 <code>GEMINI_API_KEY</code>를 발급받아 등록하면 중단 없이 무제한으로 정밀한 실시간 AI 분석 서비스를 이용하실 수 있습니다.
+                  </p>
+                </div>
+              </div>
+            )}
             
             {/* Header info / analysis card */}
             <div className="bg-white border border-slate-200/60 rounded-3xl p-5 shadow-sm space-y-4">
