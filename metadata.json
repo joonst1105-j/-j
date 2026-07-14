@@ -1,0 +1,6 @@
+{
+  "name": "쇼핑 쇼츠 제작 도우미",
+  "description": "인기 쇼핑 트렌드 분석, 상품 기반 AI 대본 생성, 후킹 문구 추천 및 무료 TTS 음성 제작 기능을 제공하는 쇼츠/릴스/틱톡 제작 도우미입니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
