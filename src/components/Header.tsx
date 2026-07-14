@@ -16,7 +16,7 @@ export default function Header() {
           <div>
             <div className="flex items-center gap-2">
               <h1 className="font-display font-black text-2xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-amber-600">
-                SHORTS LAB
+                쇼츠마스터
               </h1>
               <span className="px-2 py-0.5 rounded text-[10px] font-black bg-rose-50 text-rose-600 border border-rose-100 uppercase tracking-widest">
                 v1.5 Beta

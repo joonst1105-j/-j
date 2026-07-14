@@ -76,7 +76,7 @@ export default function App() {
       {/* Aesthetic Footer */}
       <footer className="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-400 font-sans space-y-2">
         <div className="flex items-center justify-center gap-2">
-          <span>쇼핑 쇼츠 제작 도우미</span>
+          <span>쇼츠마스터 - 쇼핑 쇼츠 제작 도우미</span>
           <span className="text-slate-200">|</span>
           <span className="flex items-center gap-0.5 text-slate-400">
             Made with <Heart className="w-3.5 h-3.5 text-rose-500 fill-current" /> by Gemini
