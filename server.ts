@@ -8,7 +8,7 @@ import { generateTrendingVideos } from "./serverTrends";
 // Load environment variables
 dotenv.config();
 
-const app = express();
+export const app = express();
 const PORT = 3000;
 
 // Set up body parsers (large limit for image uploads)
@@ -742,30 +742,32 @@ function generateDemoFallbackScript(
 }
 
 // -------------------------------------------------------------------------
-// Serve Static Assets & SPA Handling
+// Serve Static Assets & SPA Handling (Local or container environments only)
 // -------------------------------------------------------------------------
-if (process.env.NODE_ENV !== "production") {
-  const startDevVite = async () => {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-    });
-    app.use(vite.middlewares);
+if (!process.env.NETLIFY) {
+  if (process.env.NODE_ENV !== "production") {
+    const startDevVite = async () => {
+      const vite = await createViteServer({
+        server: { middlewareMode: true },
+        appType: "spa",
+      });
+      app.use(vite.middlewares);
+      
+      app.listen(PORT, "0.0.0.0", () => {
+        console.log(`Development Server running on http://localhost:${PORT}`);
+      });
+    };
+    startDevVite();
+  } else {
+    const distPath = path.join(process.cwd(), "dist");
+    app.use(express.static(distPath));
     
-    app.listen(PORT, "0.0.0.0", () => {
-      console.log(`Development Server running on http://localhost:${PORT}`);
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(distPath, "index.html"));
     });
-  };
-  startDevVite();
-} else {
-  const distPath = path.join(process.cwd(), "dist");
-  app.use(express.static(distPath));
-  
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(distPath, "index.html"));
-  });
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Production Server running on port ${PORT}`);
-  });
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Production Server running on port ${PORT}`);
+    });
+  }
 }
